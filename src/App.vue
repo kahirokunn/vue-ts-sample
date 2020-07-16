@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <HelloWorld :msg="showAge()" />
   </div>
 </template>
 
@@ -13,6 +13,21 @@ export default Vue.extend({
   name: "App",
   components: {
     HelloWorld
+  },
+  data(): { age: number } {
+    return {
+      age: 123
+    };
+  },
+  computed: {
+    test() {
+      return this.age;
+    }
+  },
+  methods: {
+    showAge() {
+      return this.test;
+    }
   }
 });
 </script>
