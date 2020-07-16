@@ -6,28 +6,21 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent, reactive, computed } from "@vue/composition-api";
+import HelloWorld from "@/components/HelloWorld.vue";
 
-export default Vue.extend({
-  name: "App",
+export default defineComponent({
+  name: "Home",
   components: {
     HelloWorld
   },
-  data(): { age: number } {
+  setup() {
+    const data = reactive({ age: 123 });
+    const test = computed(() => data.age);
+    const showAge = () => test.value;
     return {
-      age: 123
+      showAge
     };
-  },
-  computed: {
-    test() {
-      return this.age;
-    }
-  },
-  methods: {
-    showAge() {
-      return this.test;
-    }
   }
 });
 </script>
